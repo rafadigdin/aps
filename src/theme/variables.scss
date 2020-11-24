@@ -4,11 +4,11 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #660047;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-shade: #009900;
   --ion-color-primary-tint: #4c8dff;
 
   /** secondary **/
@@ -83,11 +83,12 @@
    */
 
   body {
-    --ion-color-primary: #428cff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --ion-color-primary: #71067a;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255,255,255;
-    --ion-color-primary-shade: #3a7be0;
+    --ion-color-primary-shade: #8c0ec7;
     --ion-color-primary-tint: #5598ff;
 
     --ion-color-secondary: #50c8ff;
@@ -193,13 +194,13 @@
    */
 
   .md body {
-    --ion-background-color: #121212;
+    --ion-background-color: #000000;
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffff;
     --ion-text-color-rgb: 255,255,255;
 
-    --ion-border-color: #222222;
+    --ion-border-color: #000000;
 
     --ion-color-step-50: #1e1e1e;
     --ion-color-step-100: #2a2a2a;
@@ -221,12 +222,12 @@
     --ion-color-step-900: #e7e7e7;
     --ion-color-step-950: #f3f3f3;
 
-    --ion-item-background: #1e1e1e;
+    --ion-item-background: #000000;
 
-    --ion-toolbar-background: #1f1f1f;
+    --ion-toolbar-background: #333333;
 
-    --ion-tab-bar-background: #1f1f1f;
+    --ion-tab-bar-background: #000000;
 
-    --ion-card-background: #1e1e1e;
+    --ion-card-background: #000000;
   }
 }
