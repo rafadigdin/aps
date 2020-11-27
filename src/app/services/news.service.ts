@@ -10,62 +10,14 @@ import { retry, catchError } from 'rxjs/operators';
 
 export class NewsService {
 
-  url = 'http://newsapi.org/v2/';
-  apiKey = '6f33ee1551154d5bb70665c2bf773216';
+  private chave = "6f33ee1551154d5bb70665c2bf773216";
+  private caminhoPadrao = "https://newsapi.org/v2";
+  
+  constructor(public http:HttpClient) { }
 
-  constructor(private httpClient: HttpClient) { }
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  getNews(type: string, q: string, language: string, page: number, pageSize: number) {
-    let query = this.url + this.montaFiltro(type, q, language, page, pageSize);
-    return this.httpClient.get(query);
+  public getNews(page:number = 1)
+  {
+    let noticias=`${this.caminhoPadrao}/Everything?q=games&apiKey=${this.chave}&page=${page}&language=pt`;
+    return this.http.get(noticias);
   }
-
-  montaFiltro(type: string, q: string, language: string, page: number, pageSize: number): string {
-    let filtro: string = "";
-    
-    if(type && type.length === 0) {
-      filtro += "Everything";
-    }
-    else {
-      filtro += type;
-    }
-
-    filtro += "?";
-
-    if(q && q.length > 0) {
-      filtro += "q=" + q;
-      filtro += "&";
-    }
-
-    if(language && language.length === 0) {
-      filtro += "language=pt&"
-    } 
-    else {
-      filtro += "language=" + language + "&";
-    }
-
-    if(page === 0) {
-      filtro += "page=1&";
-    } 
-    else {
-      filtro += "page=" + page;
-      filtro += "&";
-    }
-
-    if(pageSize === 0) {
-      filtro += "pageSize=10&";
-    } 
-    else {
-      filtro += "pageSize=" + pageSize;
-      filtro += "&";
-    }
-
-    filtro += "apiKey=" + this.apiKey;
-    return filtro;
-  }
-
 }

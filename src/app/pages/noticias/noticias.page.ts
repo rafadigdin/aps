@@ -1,6 +1,7 @@
 import { NewsService } from '../../services/news.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
+import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({
   selector: 'app-noticias',
@@ -9,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
   providers: [ NewsService ]
 })
 export class NoticiasPage implements OnInit {
+  @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   public lista_noticias = new Array<any>();
   public page:number = 1;
@@ -42,11 +44,12 @@ export class NoticiasPage implements OnInit {
     this.carregarNoticias();
     setTimeout(() => {
       event.target.complete();
+      this.infiniteScroll.disabled = false;
     }, 1000);
   }
 
   carregarNoticias() {
-    this.newsService.getNews("Everything", "Games", "pt", this.page, 20).subscribe(
+    this.newsService.getNews(this.page).subscribe(
       data => {
         const response = (data as any);
 

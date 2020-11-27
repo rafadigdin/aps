@@ -7,7 +7,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div #mapElement class="map"></div>
+<ion-content>
+
+  <ion-grid style="height: 100%; display: flex; flex-flow: column;">
+    <ion-row style="flex-grow: 1;">
+      <ion-col>
+        <div id="mapId" style="height: 100%;">
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" color="primary" (click)="pegarLocal()">
+          <ion-icon slot="start" name="navigate-outline"></ion-icon>Minha Localização Atual
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
   

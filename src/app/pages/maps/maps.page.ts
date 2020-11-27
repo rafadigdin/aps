@@ -1,6 +1,6 @@
-import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-declare var google;
+import { Map, tileLayer, marker } from 'leaflet';
 
 @Component({
   selector: 'app-maps',
@@ -8,30 +8,41 @@ declare var google;
   styleUrls: ['./maps.page.scss'],
 })
 export class MapsPage implements OnInit {
-  map;
-  @ViewChild('mapElement') mapElement;
+  constructor(private geoLocation: Geolocation) { }
 
-  constructor(private geolocation: Geolocation) { }
-
+  map:Map;
+  newMarker:any;
+  
   ngOnInit() {
+  }
 
-    this.geolocation.getCurrentPosition()
-      .then((resp) => {
-        const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-        const mapOptions = {
-          zoom: 18,
-          center: position
-        }
+  ionViewDidEnter(){
+    this.loadMap();
+  }
 
-        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  loadMap() {
+    this.map = new Map("mapId").setView([-22.8671429, -43.2538754], 13);
 
-        const marker = new google.maps.Marker({
-          position: position,
-          map: this.map
-        });
+    tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { 
+        attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY - SA</a>'
+      }).addTo(this.map);
+  }    
 
-      }).catch((error) => {
-        console.log('Erro ao recuperar sua posição', error);
-      });
+  pegarLocal() {
+    this.geoLocation.getCurrentPosition().then(
+      (resp) => {
+        this.map.setView([resp.coords.latitude, resp.coords.longitude], 15);
+        this.newMarker = marker([resp.coords.latitude, resp.coords.longitude], { draggable: false }).addTo(this.map);
+        this.newMarker.bindPopup("Você está aqui!").openPopup();
+
+        console.log(resp.coords.latitude + " " + resp.coords.longitude);
+      }
+    ).catch(
+      (error) => {
+        console.log("Erro ao capturar a localização", error);
+      }
+    );
   }
 }

@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Feed de Notícias
+      Notícias sobre Games
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,15 +23,14 @@
     </ion-card-header>
   
     <ion-card-content style="text-align: justify; text-justify: inter-word;">
-      {{noticia.description}} <a [href]="noticia.url" target="_blank">[Clique aqui para ler mais!]</a>
+      {{noticia.description}} <a [href]="noticia.url" target="_blank">[Continue lendo...]</a>
     </ion-card-content>
   </ion-card>
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="efeitoScrollInfinito($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
-      loadingText="Carregando mais notícias...">
+      loadingText="Carregando notícias...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>  
 </ion-content>
-
