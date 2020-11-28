@@ -13,6 +13,9 @@ export class RegistrarPage implements OnInit {
   public user: User = {};
   private loading: any;
 
+  showPassword = false;
+  passwordToggleIcon = "eye";
+
   constructor( 
     private authService: AuthService,
     private loadingCtrl: LoadingController,
@@ -46,4 +49,13 @@ export class RegistrarPage implements OnInit {
     toast.present();
   }
 
+  togglePassword():void{
+    this.showPassword = !this.showPassword;
+
+    if(this.passwordToggleIcon == 'eye'){
+      this.passwordToggleIcon = 'eye-off';
+     } else {
+      this.passwordToggleIcon = 'eye';
+      }
+    }
 }

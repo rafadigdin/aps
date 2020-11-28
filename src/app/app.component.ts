@@ -1,6 +1,5 @@
 import { LoginPageModule } from './pages/login/login.module';
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -43,7 +42,10 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
+
+    this.platform = platform;
     this.initializeApp();
+    
   }
 
 
@@ -64,4 +66,8 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  exitApp(){
+    navigator['app'].exitApp();
+ }
 }

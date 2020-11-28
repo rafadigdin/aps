@@ -13,6 +13,9 @@ export class LoginPage implements OnInit {
   public user: User = {};
   private loading: any;
 
+  showPassword = false;
+  passwordToggleIcon = "eye";
+
   constructor(
     private authService: AuthService,
     private loadingCtrl: LoadingController,
@@ -45,5 +48,16 @@ export class LoginPage implements OnInit {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
   }
+    
+  togglePassword():void{
+    this.showPassword = !this.showPassword;
 
-}
+    if(this.passwordToggleIcon == 'eye'){
+      this.passwordToggleIcon = 'eye-off';
+     } else {
+      this.passwordToggleIcon = 'eye';
+      }
+    }
+  }
+
+

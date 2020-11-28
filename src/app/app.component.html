@@ -18,6 +18,10 @@
         <ion-button *ngIf="authService.isAuthenticated" color="danger"  expand="block" (click)="logout()">Logout
           <ion-icon slot="start" name="log-out-outline"></ion-icon>
         </ion-button>
+        
+        <ion-button color="warning" expand="block" (click)="exitApp()">Fechar App
+          <ion-icon slot="start" name="close-outline"></ion-icon>
+        </ion-button>
 
       </ion-content>
     </ion-menu>
