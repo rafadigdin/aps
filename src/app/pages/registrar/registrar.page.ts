@@ -12,6 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegistrarPage implements OnInit {
   public user: User = {};
   private loading: any;
+  public nome:string = "";
+  public email:string = "";
+  public senha:string = "";
+  public mensagem:string = "";
 
   showPassword = false;
   passwordToggleIcon = "eye";

@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
 
     this.platform = platform;
     this.initializeApp();
-    
   }
 
 
@@ -70,4 +69,5 @@ export class AppComponent implements OnInit {
   exitApp(){
     navigator['app'].exitApp();
  }
+
 }
